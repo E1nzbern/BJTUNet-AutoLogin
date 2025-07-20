@@ -17,6 +17,8 @@ logging.basicConfig(
 if len(sys.argv) == 3:
     user = sys.argv[1]
     password = sys.argv[2]
+    driver_url = sys.argv[3] if len(sys.argv) > 3 else "http://localhost:4444/wd/hub"
+    logging.info(f"使用账号: {user} 进行登录")
 else:
     quit("Usage: python autologin.py <account> <password>")
 
@@ -39,7 +41,7 @@ options.add_argument(
 logging.info("脚本启动，正在初始化WebDriver...")
 try:
     driver = webdriver.Remote(
-        command_executor="http://localhost:8888/wd/hub", options=options
+        command_executor=driver_url, options=options
     )
 except Exception as e:
     logging.info(f"❌ 连接 WebDriver 失败，请确认 Docker 容器是否正常运行。错误: {e}")
