@@ -14,10 +14,10 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",  # 定义时间格式
 )
 
-if len(sys.argv) == 3:
+if len(sys.argv) == 4:
     user = sys.argv[1]
     password = sys.argv[2]
-    driver_url = sys.argv[3] if len(sys.argv) > 3 else "http://localhost:4444/wd/hub"
+    driver_url = sys.argv[3] if len(sys.argv) > 3 else "http://127.0.0.1:4444/wd/hub"
     logging.info(f"使用账号: {user} 进行登录")
 else:
     quit("Usage: python autologin.py <account> <password>")
