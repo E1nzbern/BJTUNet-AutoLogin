@@ -51,7 +51,7 @@ options.add_argument(
     "--disable-blink-features=AutomationControlled"
 )  # 禁用Blink自动化控制
 
-logging.info("脚本启动，正在初始化WebDriver...")
+logging.info(f"脚本启动，正在初始化WebDriver（{driver_url}）")
 try:
     driver = webdriver.Remote(command_executor=driver_url, options=options)
 except Exception as e:
